@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c78beb9f-1faf-44cb-9d1a-27066d74839d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from tb_vestidos]]>
+	</queryString>
+	<field name="id_vestido" class="java.lang.Integer"/>
+	<field name="categoria" class="java.lang.String"/>
+	<field name="cor" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="tamanho" class="java.lang.String"/>
+	<group name="id_vestido">
+		<groupExpression><![CDATA[$F{id_vestido}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="602" y="59" width="100" height="20" uuid="18f6e620-6b26-4690-8eda-a2b2dc9e240f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm">
+				<reportElement x="702" y="59" width="100" height="20" uuid="b95320d3-2dd0-4311-8f0e-b18a0bc3658d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="802" height="27" uuid="384fa662-9240-443d-974c-ef2eeacddba1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Relatório de Vestidos ]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="65" height="20" uuid="72208c34-108a-48e3-8b97-76cbed413d9d"/>
+				<text><![CDATA[Vestido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="0" width="77" height="20" uuid="4cfd746f-c7c7-4dd0-8ecf-bfae3e87a094"/>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="183" y="2" width="78" height="20" uuid="30130cb3-49ed-405c-a703-143bc2cd69a7"/>
+				<text><![CDATA[Cor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="277" y="2" width="412" height="20" uuid="85789d1c-215b-4a99-8d31-00a40bc29108"/>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="702" y="2" width="100" height="20" uuid="64dbca39-e085-481a-893c-2ca22219bbcf"/>
+				<text><![CDATA[Tamanho]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="51" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="65" height="20" uuid="b439673a-e5a2-48c1-8f85-96c4c3418d50"/>
+				<textFieldExpression><![CDATA[$F{id_vestido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="0" width="77" height="20" uuid="8af65a25-5348-4f17-badb-16d0741ad509"/>
+				<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="0" width="78" height="20" uuid="64978a6a-92cc-40c8-8bdf-7df3615d9210"/>
+				<textFieldExpression><![CDATA[$F{cor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="277" y="0" width="412" height="20" uuid="afe8519a-568b-49f5-a32b-1c4fce6ec29b"/>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="702" y="0" width="100" height="20" uuid="2e8072f9-7d29-43e7-b146-8091f002bc30"/>
+				<textFieldExpression><![CDATA[$F{tamanho}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="53" splitType="Stretch">
+			<textField>
+				<reportElement x="661" y="33" width="101" height="20" uuid="030fa87f-cffe-437e-bd72-d225cd9723f9"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página " + $V {PAGE_NUMBER} + " de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="33" width="40" height="20" uuid="e32690d1-222a-48ef-a2c1-4f0a9e75561d"/>
+				<textFieldExpression><![CDATA[+ $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1f20efdf-6f11-4b3b-8fe3-0d91b190feed">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select tb_reserva_traje.*, tb_cliente.id_cliente, tb_cliente.nome, tb_vestidos.descricao
+from tb_reserva_traje
+inner join tb_cliente on (tb_cliente.id_cliente = tb_reserva_traje.id_cliente)
+inner join tb_vestidos on (tb_vestidos.id_vestido = tb_reserva_traje.id_vestido)
+
+order by tb_reserva_traje.id_cliente]]>
+	</queryString>
+	<field name="id_reserva_traje" class="java.lang.Integer"/>
+	<field name="data_locacao" class="java.sql.Date"/>
+	<field name="id_cliente" class="java.lang.Integer"/>
+	<field name="id_vestido" class="java.lang.Integer"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<group name="id_reserva_traje">
+		<groupExpression><![CDATA[$F{id_reserva_traje}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="38" uuid="83a15074-1e9b-4c67-bca9-9db8357c1953"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório da Locação de Trajes de Acordo com o Cliente]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="702" y="38" width="100" height="20" uuid="2bf10129-29c4-4982-abf3-bf6ce2a61228"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="20" uuid="178285fe-c558-47ea-a477-9f8d6a5aa3df"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="0" width="178" height="20" uuid="6dc21f38-f780-440e-b683-9889dfedd99a"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="253" y="0" width="110" height="20" uuid="16b3c056-154c-459b-bcad-f5374231b43c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código do Vestido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="2" width="214" height="20" uuid="7d75f42c-8ed0-4ea5-8a8d-a5c51f47beed"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="608" y="2" width="82" height="20" uuid="1b1db5c5-5d49-4a4a-b6d9-b33142244faf"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reserva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="702" y="2" width="100" height="20" uuid="1f0e5035-986f-4a41-89d4-eb426cc3d0f8"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data da Locação]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="50" height="20" uuid="f521e77b-f42e-434c-88d2-2561324fd00a"/>
+				<textFieldExpression><![CDATA[$F{id_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="63" y="0" width="178" height="20" uuid="049d8f7f-4d66-40ab-9f00-b126b6e76139"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="253" y="0" width="110" height="20" uuid="16b6022d-f064-4dad-859d-084b554b0cae"/>
+				<textFieldExpression><![CDATA[$F{id_vestido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="377" y="0" width="214" height="20" uuid="15e2da42-30a3-4399-9d12-077824c9f483"/>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="608" y="0" width="82" height="20" uuid="aa220492-31aa-41a0-8e45-5e8e17f980f7"/>
+				<textFieldExpression><![CDATA[$F{id_reserva_traje}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="702" y="0" width="100" height="20" uuid="b167e715-e1f6-43a9-bb85-e489040f3229"/>
+				<textFieldExpression><![CDATA[$F{data_locacao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="559" y="31" width="194" height="20" uuid="8441ad13-f45b-4a1e-90cb-05eccc12de02"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="31" width="40" height="20" uuid="05168f25-04f6-4773-b417-1eeb2fd851a3"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
